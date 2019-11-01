@@ -1,0 +1,1 @@
+{ "name": "com.gameframe.datatypes.Editor", "references": [ "com.gameframe.datatypes" ], "optionalUnityReferences": [], "includePlatforms": [ "Editor" ], "excludePlatforms": [] }

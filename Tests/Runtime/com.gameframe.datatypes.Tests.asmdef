@@ -1,0 +1,1 @@
+{ "name": "com.gameframe.datatypes.Tests", "references": [ "com.gameframe.datatypes" ], "optionalUnityReferences": ["TestAssemblies"], "includePlatforms": [], "excludePlatforms": [] }

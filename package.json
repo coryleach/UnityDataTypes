@@ -1,0 +1,12 @@
+{
+  "name": "com.gameframe.datatypes",
+  "displayName": "Gameframe.DataTypes",
+  "version": "1.0.0",
+  "description": "Data Types",
+  "keywords": [],
+  "author": {
+    "name": "Cory Leach",
+    "email": "cory.leach@gmail.com",
+    "url": "https://github.com/coryleach"
+  }
+}
