@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gameframe.Serializable
 {
@@ -198,6 +199,64 @@ namespace Gameframe.Serializable
         }
 
     }
+    
+    public abstract class SerializableDictionary<TKey, TValue> : ISerializationCallbackReceiver, IEnumerable<KeyValuePair<TKey, TValue>>
+    {
+        private Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
+
+        public virtual TValue this[TKey key]
+        {
+            get => _dictionary[key];
+            set
+            {
+                _dictionary[key] = value;
+                Set(key, value);
+            }
+        }
+
+        public TValue GetOrDefault(TKey key, TValue defaultValue)
+        {
+            return TryGetValue(key, out var outValue) ? outValue : defaultValue;
+        }
+
+        public bool TryGetValue(TKey key, out TValue outValue)
+        {
+            return _dictionary.TryGetValue(key, out outValue);
+        }
+
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+        {
+            return _dictionary.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _dictionary.GetEnumerator();
+        }
+
+        public virtual void OnAfterDeserialize()
+        {
+            _dictionary = new Dictionary<TKey, TValue>();
+            int count = InternalCount();
+            for (int i = 0; i < count; i++)
+            {
+                _dictionary[GetKey(i)] = GetValue(i);
+            }
+        }
+
+        public virtual void OnBeforeSerialize()
+        {
+        }
+
+        public int Count => _dictionary.Count;
+
+        protected abstract int InternalCount();
+        protected abstract void Set(TKey key, TValue value);
+        protected abstract TKey GetKey(int i);
+        protected abstract TValue GetValue(int i);
+    }
+    
+
 }
 
 
