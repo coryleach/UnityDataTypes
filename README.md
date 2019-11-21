@@ -8,7 +8,7 @@
 
 > Library of misc data types I've created for use in unity
 
-## Install 
+## Quick Package Install 
 
 #### Using UnityPackageManager (for Unity 2018.3 or later)
 
