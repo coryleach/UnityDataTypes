@@ -10,7 +10,7 @@ namespace Gameframe.DataTypes.Tests.Editor
     {
         // A Test behaves as an ordinary method
         [Test]
-        public void DataTypesEditorTestsSimplePasses()
+        public void SerializableDictionaryTest()
         {
             // Use the Assert class to test conditions
         }
